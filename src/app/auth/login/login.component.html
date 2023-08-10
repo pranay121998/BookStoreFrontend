@@ -1,0 +1,30 @@
+<mat-card class="center">
+    <form [formGroup]="loginForm" (submit)="login()">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" name="email" formControlName="email">
+            <mat-error *ngIf="f['email'].errors">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['pattern']">Email is not a valid email.</div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" name="password" formControlName="password">
+            <mat-error *ngIf="f['password'].errors">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit" style="margin-left: calc(43%)" color="primary">Login</button>
+
+    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" col-md-12 text-error mt-3" *ngIf="
+                                      (errorMsg && loginForm.invalid) || errorMsg
+                                    ">
+                {{ errorMsg }}
+            </div>
+        </div>
+    </div>
+</mat-card>

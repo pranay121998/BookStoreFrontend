@@ -1,0 +1,17 @@
+.center {
+    width: 40%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+.text-error {
+    font-size: 16px;
+    line-height: 1.2em;
+    color: red;
+}
+
+.mat-form-field {
+    display: block
+}

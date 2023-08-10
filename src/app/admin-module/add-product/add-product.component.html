@@ -1,0 +1,78 @@
+<mat-card class="center">
+    <form class="g-3" [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+        <div class="form-group col-md-12">
+            <mat-form-field appearance="outline">
+                <mat-label for="title">Title</mat-label>
+                <input matInput type="text" formControlName="title" name="title">
+
+                <mat-error *ngIf="f['title'].errors && f['title'].touched">
+
+                    <div *ngIf="f['title'].errors['required']">Title is required</div>
+                    <div *ngIf=" !f['title'].errors['required'] && f['title'].errors['minlength']['actualLength'] <5">
+                        Title
+                        must be more than 5 words long
+                    </div>
+
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div class="form-group col-md-12">
+            <mat-form-field appearance="outline">
+                <mat-label for="imageUrl">Image Url</mat-label>
+                <input matInput (click)=image.click() type="text" readonly formControlName="imageUrl">
+                <input #image style="display: none;" name="image" type="file" (change)="onUploadFile($event)">
+                <mat-error *ngIf="f['imageUrl'].errors && f['imageUrl'].touched">
+                    <div *ngIf="f['imageUrl'].errors['required']">Image Url is required</div>
+                    <div
+                        *ngIf=" !f['imageUrl'].errors['required'] && f['imageUrl'].errors['minlength']['actualLength'] <8">
+                        Title
+                        must be more than 5 words long
+                    </div>
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="form-group col-md-12">
+            <mat-form-field appearance="outline">
+                <mat-label for="price">Price</mat-label>
+                <input matInput type="number" formControlName="price">
+                <mat-error *ngIf="f['price'].errors && f['price'].touched" class="invalid-feedback">
+                    <div *ngIf="f['price'].errors['required']">Price is required</div>
+                    <!-- <div *ngIf=" !f['price'].errors['required'] && f['price'].errors['minlength']['actualLength'] <8">
+                Price
+                must be more than 5 words long
+            </div> -->
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="form-group col-md-12">
+            <mat-form-field appearance="outline">
+                <mat-label for="desc">Description</mat-label>
+                <textarea matInput name="desc" formControlName="desc" cols="20" rows="5"></textarea>
+                <mat-error *ngIf="f['desc'].errors && f['desc'].touched" class="invalid-feedback">
+                    <div *ngIf="f['desc'].errors['required']">Description is required</div>
+                    <div *ngIf=" !f['desc'].errors['required'] && f['desc'].errors['minlength']['actualLength'] <8">
+                        Description
+                        must be more than 10 characters long
+                    </div>
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="form-group col-md-12 d-grid gap-2 mt-3 ">
+            <button class="btn-lg" type="submit" mat-raised-button color="primary">Add Product</button>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" col-md-12 text-error mt-3" *ngIf="
+                                  (errorMsg && productForm.invalid) || errorMsg
+                                ">
+                {{ errorMsg }}
+            </div>
+        </div>
+    </div>
+</mat-card>

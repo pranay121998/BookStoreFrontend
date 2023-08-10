@@ -1,0 +1,21 @@
+<main class="card-flex">
+    <div class=" card-container" *ngFor="let prod of products">
+        <mat-card class="example-card ">
+            <mat-card-header>
+                <mat-card-title>{{prod.title}}</mat-card-title>
+            </mat-card-header>
+            <div class="image" mat-card-image>
+                <img src='http://192.168.100.29:8080/{{prod.imageUrl}}' alt="{{prod.title}}">
+            </div>
+            <mat-card-content>
+                <p>
+                    {{prod.description}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="example-actions">
+                <button mat-raised-button>Add to Cart</button>
+                <button mat-raised-button>Details</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</main>
