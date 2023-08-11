@@ -57,7 +57,10 @@ export class AuthService {
             debugger
             this.setToken(res.data.token, res.data.token_type)
             // this.setToken(res.data, "Bearer")
+            let t = res.data.expiresIn;
+            let date = new Date().getUTCDate() - new Date(t).getUTCDate();
 
+            this.autoLogout(date * 3600 * 1000);
             this.isLog.next(true);
 
         }));
@@ -68,6 +71,7 @@ export class AuthService {
         this.router.navigate(['/auth/login'], { replaceUrl: true })
     }
     autoLogout(expireTime: number) {
+        debugger
         setTimeout(() => {
             this.logOut();
         }, expireTime);

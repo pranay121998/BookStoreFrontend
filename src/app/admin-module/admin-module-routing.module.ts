@@ -5,6 +5,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 
 const routes: Routes = [
     { path: "AddProduct", component: AddProductComponent },
+    { path: "EditProduct", component: AddProductComponent },
     { path: 'AdminProducts', component: AdminProductsComponent }
 ];
 

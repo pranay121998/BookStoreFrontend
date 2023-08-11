@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'src/app/services/cookie.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { ShopService } from 'src/app/services/shop.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ShopService } from 'src/app/services/shop.service';
 })
 export class ProductsComponent implements OnInit {
   products: any[] = [];
-  constructor(private shopService: ShopService, private cookieService: CookieService) {
+  constructor(private shopService: ShopService, private cookieService: CookieService, private productService: ProductsService) {
 
   }
 
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit {
     document.cookie
   }
   public getProducts() {
-    this.shopService.getProductsService().subscribe((res: any) => {
+    this.productService.getProductsByUsers().subscribe((res: any) => {
       console.log(res)
       this.products = res.data
     })

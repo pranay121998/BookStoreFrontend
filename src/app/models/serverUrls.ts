@@ -1,6 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 
-const api = "http://192.168.100.29:8080/api/";//"http://localhost:3000";
+export const BASEURL = "http://192.168.100.29:8080/";
+const API = "http://192.168.100.29:8080/API/";//"http://localhost:3000";
 
 
 // export const http_options = {
@@ -10,12 +11,14 @@ const api = "http://192.168.100.29:8080/api/";//"http://localhost:3000";
 //     }),  
 // };
 
-export const SIGN_UP = api + "Auth/SignUp";
+export const SIGN_UP = API + "Auth/SignUp";
 
-export const LOGIN = api + "Auth/SignIn";//'/auth/login';
+export const LOGIN = API + "Auth/SignIn";//'/auth/login';
 
-export const ADD_PRODUCT = api + "Admin/SaveProduct";//'/admin/add-product';
+export const ADD_PRODUCT = API + "Admin/SaveProduct";//'/admin/add-product';
 
-export const GET_PRODUCTS = api + "Admin/GetProducts";//'/shop/products';
+export const GET_USER_PRODUCTS = API + "Admin/GetProductsByUser";//'/shop/products';
 
-export const GET_ADMIN_PRODUCTS = api + "Admin/GetProducts";
+export const GET_PRODUCTS_BY_PRODUCTID = API + "Admin/GetProductsByProductId?prodId=";
+
+export const GET_ADMIN_PRODUCTS = API + "Admin/GetProducts";

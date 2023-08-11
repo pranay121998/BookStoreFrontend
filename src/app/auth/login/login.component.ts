@@ -45,10 +45,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(loginRequest).subscribe((res: any) => {
       // this.setToken(res.data.token, res.data.token_type)
       console.log(res)
-      let t = res.data.expiresIn.split(".")[0];
-      let date = new Date().getUTCDate() - new Date(t).getUTCDate();
 
-      this.auth.autoLogout(date * 60 * 60 * 1000);
       this.router.navigate(["/shop/index"])
     })
   }

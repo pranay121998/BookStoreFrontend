@@ -16,7 +16,7 @@ background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, F
                 </p>
             </mat-card-content>
             <mat-card-actions class="example-actions">
-                <button mat-raised-button>Edit</button>
+                <button mat-raised-button (click)="onEdit(prod.prodID)">Edit</button>
                 <button mat-raised-button>Delete</button>
             </mat-card-actions>
         </mat-card>
