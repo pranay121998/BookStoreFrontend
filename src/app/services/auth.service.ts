@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { IApiResponse } from "../models/common.Model";
 import { LOGIN, SIGN_UP } from "../models/serverUrls";
-
 @Injectable({
     providedIn: "root"
 })
@@ -59,6 +58,7 @@ export class AuthService {
             // this.setToken(res.data, "Bearer")
             let t = res.data.expiresIn;
             let date = new Date().getUTCDate() - new Date(t).getUTCDate();
+            console.log(date, new Date().getUTCDate(), new Date(t).getUTCDate(), t);
 
             this.autoLogout(date * 3600 * 1000);
             this.isLog.next(true);
