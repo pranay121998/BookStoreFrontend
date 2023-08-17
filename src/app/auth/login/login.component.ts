@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { PATTERN } from 'src/app/models/pattern';
@@ -13,12 +13,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+  loginForm: UntypedFormGroup = new UntypedFormGroup({
+    email: new UntypedFormControl(''),
+    password: new UntypedFormControl('')
   })
   errorMsg: string | undefined;
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private auth: AuthService) { }
+  constructor(private fb: UntypedFormBuilder, private http: HttpClient, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

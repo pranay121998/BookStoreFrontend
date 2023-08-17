@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IApiResponse } from 'src/app/models/common.Model';
 import { AuthService, ISignUp } from 'src/app/services/auth.service';
@@ -13,12 +13,12 @@ export class SignupComponent implements OnInit {
   @ViewChild("signUpFormView", { static: false }) signUpFormView!: NgForm;
 
   errorMsg: string = "";
-  signUpForm: FormGroup = new FormGroup({
-    email: new FormControl(""),
-    userPassword: new FormControl(""),
-    confirmPassword: new FormControl("")
+  signUpForm: UntypedFormGroup = new UntypedFormGroup({
+    email: new UntypedFormControl(""),
+    userPassword: new UntypedFormControl(""),
+    confirmPassword: new UntypedFormControl("")
   });
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private auth: AuthService,
     private router: Router) {
 
@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit {
   }
 
   ConfrimPasswordValidators(password: string, confirmPassword: string) {
-    return (fromGroup: FormGroup) => {
+    return (fromGroup: UntypedFormGroup) => {
       const pass = this.signUpForm.controls[password];
       const cPass = this.signUpForm.controls[confirmPassword];
       if (pass.value && !cPass.value) {

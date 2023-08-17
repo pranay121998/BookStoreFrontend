@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IApiResponse } from 'src/app/models/common.Model';
 
@@ -32,11 +32,11 @@ export class AddProductComponent implements OnInit {
     ProdID: ''
   };
 
-  productForm: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    imageUrl: new FormControl(''),
-    price: new FormControl(''),
-    desc: new FormControl('')
+  productForm: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(''),
+    imageUrl: new UntypedFormControl(''),
+    price: new UntypedFormControl(''),
+    desc: new UntypedFormControl('')
   });
 
   errorMsg!: string;
@@ -46,7 +46,7 @@ export class AddProductComponent implements OnInit {
   prodId: string = "";
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private productService: ProductsService,
     private acivateRoute: ActivatedRoute
