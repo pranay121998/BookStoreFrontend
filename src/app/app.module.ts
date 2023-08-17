@@ -29,7 +29,8 @@ import { ShopGuard } from './shop/shop.guard';
     ShopModule,
     AuthModule,
     AdminModuleModule
-  ], exports: [HttpClientModule],
+  ]
+  , exports: [HttpClientModule],
   providers: [LoginGuard, ShopGuard],
   bootstrap: [AppComponent]
 })
