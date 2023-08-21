@@ -1,7 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 
 export const BASEURL = "http://192.168.100.29:8080/";
-const API = "http://192.168.100.29:8080/API/";//"http://localhost:3000";
+const API = "http://192.168.100.29:8080/api/";//"http://localhost:3000";
 
 
 // export const http_options = {
@@ -22,3 +22,5 @@ export const GET_USER_PRODUCTS = API + "Admin/GetProductsByUser";//'/shop/produc
 export const GET_PRODUCTS_BY_PRODUCTID = API + "Admin/GetProductsByProductId?prodId=";
 
 export const GET_ADMIN_PRODUCTS = API + "Admin/GetProducts";
+
+export const DELETE_ADMIN_PRODUCTS = API + 'Admin/DeleteProduct';

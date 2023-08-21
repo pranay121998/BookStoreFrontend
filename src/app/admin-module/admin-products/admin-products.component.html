@@ -1,6 +1,6 @@
 <main class="card-flex">
-    <div class=" card-container" *ngFor="let prod of adminProducts">
-        <mat-card class="example-card ">
+    <div class="card-container" *ngFor="let prod of adminProducts">
+        <mat-card appearance="outlined" class="example-card ">
             <mat-card-header>
                 <mat-card-title>{{prod.title}}</mat-card-title>
             </mat-card-header>
@@ -15,9 +15,9 @@ background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, F
                     {{prod.description}}
                 </p>
             </mat-card-content>
-            <mat-card-actions class="example-actions">
-                <button mat-raised-button (click)="onEdit(prod.prodID)">Edit</button>
-                <button mat-raised-button>Delete</button>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="onEdit(prod.prodID)">Edit</button>
+                <button mat-raised-button color="warn" (click)="onDelete(prod.prodID)">Delete</button>
             </mat-card-actions>
         </mat-card>
     </div>

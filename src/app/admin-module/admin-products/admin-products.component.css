@@ -1,0 +1,6 @@
+.mdc-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    padding: 8px;
+    justify-content: space-around;
+}

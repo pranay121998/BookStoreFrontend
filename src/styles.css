@@ -1,6 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-html,
+You can add global styles to this file,
+and also import other style files html,
 body {
     height: 100%;
 }
@@ -55,4 +54,5 @@ element.style {
 
 .image img {
     height: auto;
+    width: 100%;
 }

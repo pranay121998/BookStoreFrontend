@@ -42,4 +42,14 @@ export class AdminProductsComponent implements OnInit {
     this.router.navigateByUrl(`admin/EditProduct?prodId=${productId}&isEdit=${1}`)
   }
 
+  onDelete(productId: string) {
+    this.productService.deleteProductByProductId(productId).subscribe((res: any) => {
+      console.log(res);
+
+      // this.adminProducts = res.data
+      this.getAdminProducts();
+
+    })
+  }
+
 }

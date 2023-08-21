@@ -60,7 +60,7 @@ export class AuthService {
             let date = new Date().getUTCDate() - new Date(t).getUTCDate();
             console.log(date, new Date().getUTCDate(), new Date(t).getUTCDate(), t);
 
-            this.autoLogout(date * 3600 * 1000);
+            // this.autoLogout(date * 3600 * 1000);
             this.isLog.next(true);
 
         }));

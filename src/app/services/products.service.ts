@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from '../admin-module/add-product/add-product.component';
 import { IApiResponse } from '../models/common.Model';
-import { ADD_PRODUCT, GET_PRODUCTS_BY_PRODUCTID, GET_USER_PRODUCTS } from '../models/serverUrls';
+import { ADD_PRODUCT, DELETE_ADMIN_PRODUCTS, GET_PRODUCTS_BY_PRODUCTID, GET_USER_PRODUCTS } from '../models/serverUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,10 @@ export class ProductsService {
 
   public getImageFromServer(url: string) {
     return this.http.get(url, { responseType: "blob" });
+  }
+
+  public deleteProductByProductId(productId: string) {
+    return this.http.delete(DELETE_ADMIN_PRODUCTS + "?ProdId=" + productId)
+
   }
 }
