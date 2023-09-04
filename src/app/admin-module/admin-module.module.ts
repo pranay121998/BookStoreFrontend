@@ -4,7 +4,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminModuleRoutingModule } from './admin-module-routing.module';
 import { MaterialModule } from '../material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../services/token-interceptor';
 import { AppModule } from "../app.module";
@@ -28,7 +28,7 @@ import { UrlSanatizerPipe } from '../pipes/url-sanatizer.pipe';
     AdminModuleRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-
+    FormsModule
   ]
 })
 export class AdminModuleModule { }

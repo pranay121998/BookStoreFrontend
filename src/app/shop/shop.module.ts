@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { ShopComponent } from './shop.component';
 import { TokenInterceptor } from '../services/token-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     CommonModule,
     ShopRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ShopModule { }

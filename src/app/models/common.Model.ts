@@ -4,3 +4,8 @@ export interface IApiResponse {
     successCode: string;
     errorCode: boolean;
 }
+
+
+
+
+

@@ -1,5 +1,5 @@
 <main class="card-flex">
-    <div class=" card-container" *ngFor="let prod of products">
+    <div class="card-container" *ngFor="let prod of products">
         <mat-card appearance="outlined" class="example-card ">
             <mat-card-header>
                 <mat-card-title>{{prod.title}}</mat-card-title>
@@ -13,7 +13,7 @@
                 </p>
             </mat-card-content>
             <mat-card-actions class="example-actions">
-                <button mat-raised-button>Add to Cart</button>
+                <button (click)="addToCart(prod)" mat-raised-button>Add to Cart</button>
                 <button mat-raised-button>Details</button>
             </mat-card-actions>
         </mat-card>

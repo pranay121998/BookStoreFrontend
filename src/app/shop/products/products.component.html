@@ -16,7 +16,7 @@ background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, F
                 </p>
             </mat-card-content>
             <mat-card-actions class="example-actions">
-                <button mat-raised-button>Add to Cart</button>
+                <button type="button" (click)="addToCart(prod)" mat-raised-button>Add to Cart</button>
                 <button mat-raised-button>Details</button>
             </mat-card-actions>
         </mat-card>

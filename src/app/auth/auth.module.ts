@@ -5,19 +5,20 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MaterialModule } from '../material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    SignupComponent
-  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule
+  ],
+  declarations: [
+    LoginComponent,
+    SignupComponent
   ],
   providers: []
 })

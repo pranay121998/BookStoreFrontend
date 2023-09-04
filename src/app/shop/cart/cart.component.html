@@ -1,1 +1,86 @@
-<p>cart works!</p>
+<div class="container-fluid mt-5">
+    <h2 class="mb-5 text-center">Shopping Cart</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table id="myTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th class="text-right"><span id="amount" class="amount">Amount</span> </th>
+                            <th class="text-right"><span id="removeCart" class="remove">Remove Product</span> </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of this.cart; index as i;">
+                            <td>
+                                <div class="product-img">
+                                    <div class="img-prdct"><img src="http://192.168.100.29:8080/{{product?.imageUrl}}">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p>{{product?.title}}</p>
+                            </td>
+                            <td>
+                                <div class="button-container">
+
+                                    <!-- <mat-form-field> -->
+                                    <button class="cart-qty-plus" (click)="getQunatity(product,'add')" type="button"
+                                        value="+">+</button>
+                                    <input matInput type="number" name="qty" id="qty{{i}}"
+                                        (blur)="getQunatity(product,'custom',i)" min="0" class="qty form-control"
+                                        [(ngModel)]="product.quantity" />
+                                    <!--[(ngModel)]="qty{{i}}"-->
+                                    <button class="cart-qty-minus" (click)="getQunatity(product,'minus')" type="button"
+                                        value="-">-</button>
+                                    <!-- </mat-form-field> -->
+
+                                </div>
+
+                            </td>
+                            <td>
+                                <!-- <input type="text" value="{{product.price}}" class="price form-control" disabled> -->
+                                <span class="price">{{product?.price}}</span>
+                            </td>
+                            <td align="left">$ <span id="amount" class="amount">{{product?.amount}}</span></td>
+                            <td align="left">
+                                <button mat-fab color="warn" (click)="deleteCartProduct(product)"
+                                    aria-label="Example icon button with a delete icon">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><button type="button" mat-raised-button color="accent"
+                                    (click)="checkOut()">Checkout</button></td>
+                            <!-- <td>
+                               
+                            </td> -->
+
+                            <td align="left"><strong>TOTAL = $ <span id="total"
+                                        class="total">{{this.totalAmount}}</span></strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <form id="payment-form">
+    <div id="payment-element">
+       Elements will create form elements here
+    </div>
+    <button id="submit">Submit</button>
+    <div id="error-message">
+        Display error message to your customers here 
+    </div>
+</form> -->

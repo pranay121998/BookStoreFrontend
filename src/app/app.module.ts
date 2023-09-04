@@ -27,7 +27,7 @@ import { ShopGuard } from './shop/shop.guard';
     HttpClientModule,
     IncludesModule,
     ShopModule,
-    AuthModule,
+    // AuthModule,
     AdminModuleModule
   ]
   , exports: [HttpClientModule],
