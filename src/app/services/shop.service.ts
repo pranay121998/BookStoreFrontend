@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IApiResponse } from '../models/common.Model';
-import { ADD_TO_CART, CHECKOUT, DELETE_FROM_CART, GET_CART, GET_USER_PRODUCTS } from '../models/serverUrls';
+import { ADD_TO_CART, CHECKOUT, DELETE_FROM_CART, GET_CART, GET_ORDERS, GET_USER_PRODUCTS } from '../models/serverUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +26,10 @@ export class ShopService {
   checkout(cartItems: any) {
     return this.http.post(CHECKOUT, cartItems);
   }
+
+  getOrders() {
+    return this.http.get<IApiResponse>(GET_ORDERS);
+  }
+
+
 }

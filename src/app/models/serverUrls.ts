@@ -38,3 +38,5 @@ export const DELETE_FROM_CART = API + 'Shop/DeleteFromCart';
 export const GET_CART = API + 'Shop/GetCart';
 
 export const CHECKOUT = API + "Shop/CheckOut";
+
+export const GET_ORDERS = `${API}Shop/GetOrders`;

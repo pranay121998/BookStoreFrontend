@@ -1,10 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
+import { IApiResponse } from 'src/app/models/common.Model';
+import { ShopService } from 'src/app/services/shop.service';
 import * as XLSX from 'xlsx';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = ".xlsx"
+interface IOrders {
+  orderId: number;
+  userID: string;
+  prodID: string;
+  paymentStatusID: string;
+  createdAt: string;
+  updateAt: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  description: string;
+  quantity: number;
+}
 
+interface IProductDetails {
+  orderId: number;
+  prodID: string;
+  title: string;
+  imageUrl: string;
+  price: number;
+  description: string;
+  quantity: number;
+}
+
+interface IOrderData {
+  paymentStatusID: string;
+  createdAt: string;
+  updateAt: string;
+  total: number;
+  userID: string;
+  productDetails: IProductDetails[]
+}
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -12,13 +45,61 @@ const EXCEL_EXTENSION = ".xlsx"
 })
 export class OrdersComponent implements OnInit {
 
-
-  constructor() { }
+  OrdersList: IOrders[] = [];
+  orderDataList: IOrderData[] = [];
+  visible: boolean[] = [];
+  constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
-
+    this.getOrders()
   }
 
+  getOrders() {
+    this.shopService.getOrders().subscribe((res: IApiResponse) => {
+      this.OrdersList = res.data;
+      if (this.OrdersList.length > 0) {
+        this.orderDataList = this.createOrdersStructure(this.OrdersList);
+      }
+    })
+  }
+
+  private createOrdersStructure(OrdersList: IOrders[]): IOrderData[] {
+    const orderDataList: IOrderData[] = [];
+    OrdersList.forEach((orderList: IOrders) => {
+      let productDetails: IProductDetails = {
+        orderId: orderList.orderId,
+        prodID: orderList.prodID,
+        title: orderList.title,
+        imageUrl: orderList.imageUrl,
+        price: orderList.price,
+        description: orderList.description,
+        quantity: orderList.quantity
+      }
+      let isExists = orderDataList.findIndex(x => x.paymentStatusID === orderList.paymentStatusID)
+
+      if (isExists === -1) {
+        let orderListRow: IOrderData = {
+          paymentStatusID: orderList.paymentStatusID,
+          createdAt: orderList.createdAt,
+          updateAt: orderList.updateAt,
+          total: 0,
+          userID: orderList.userID,
+          productDetails: [productDetails]
+        }
+
+        orderDataList.push(orderListRow);
+        this.visible.push(false);
+      } else {
+
+        orderDataList[isExists].productDetails.push(productDetails)
+      }
+    });
+    return orderDataList;
+  }
+
+  collapseDiv(i: number) {
+    this.visible[i] = !this.visible[i];
+  }
   download() {
     this.exportAsExcelFile([DataSheet1, DataSheet2, DataSheet3], 'test')
   }
