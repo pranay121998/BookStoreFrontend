@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IApiResponse } from 'src/app/models/common.Model';
-import { GET_USER_PRODUCTS } from 'src/app/models/serverUrls';
+import { BASEURL, GET_USER_PRODUCTS } from 'src/app/models/serverUrls';
 import { ProductsService } from 'src/app/services/products.service';
 import { ShopService } from 'src/app/services/shop.service';
 import { IProducts } from '../products/products.component';
@@ -13,7 +13,7 @@ import { IProducts } from '../products/products.component';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
+  imageUrlPath = BASEURL;
   products: any[] = []
   constructor(private productService: ProductsService,
     private shopService: ShopService,

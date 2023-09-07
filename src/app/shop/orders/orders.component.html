@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-3 col-md">
                             <h6 class="text-charcoal mb-0 w-100">Total</h6>
-                            <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{order?.total}}</p>
+                            <p class="text-pebble mb-0 w-100 mb-2 mb-md-0">{{order?.total}} Rs.</p>
                         </div>
                         <!-- <div class="col-2 col-md">
                             <h6 class="text-charcoal mb-0 w-100">Shipped To</h6>
@@ -45,8 +45,7 @@
                         </div>
                         <div class="row no-gutters mt-3" *ngFor="let product of order.productDetails">
                             <div class="col-3 col-md-1">
-                                <img class="img-fluid pr-3" src="http://192.168.100.29:8080/{{product?.imageUrl}}"
-                                    alt="">
+                                <img class="img-fluid pr-3" src="{{imageUrlPath}}{{product?.imageUrl}}" alt="">
                             </div>
                             <div class="col-9 col-md-8 pr-0 pr-md-3">
                                 <h6 class="text-charcoal mb-2 mb-md-1">
@@ -184,5 +183,6 @@
         </div> -->
     </div>
 </div>
+
 
 <div class="p-3 hidden-md-up"></div>

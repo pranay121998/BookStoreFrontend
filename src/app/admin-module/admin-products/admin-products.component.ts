@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GET_ADMIN_PRODUCTS } from 'src/app/models/serverUrls';
+import { BASEURL, GET_ADMIN_PRODUCTS } from 'src/app/models/serverUrls';
 import { ProductsService } from 'src/app/services/products.service';
 
 
@@ -23,7 +23,7 @@ export interface IProductResponse {
 })
 export class AdminProductsComponent implements OnInit {
   adminProducts: IProductResponse[] = [];
-
+  imageUrlPath = BASEURL;
   constructor(private http: HttpClient,
     private productService: ProductsService,
     private router: Router) { }

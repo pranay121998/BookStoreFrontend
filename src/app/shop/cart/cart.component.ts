@@ -4,6 +4,7 @@ import { IProduct } from 'src/app/admin-module/add-product/add-product.component
 import { IApiResponse } from 'src/app/models/common.Model';
 import { ShopService } from 'src/app/services/shop.service';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { BASEURL } from 'src/app/models/serverUrls';
 export interface ICart {
   userID: string;
   prodID: string;
@@ -25,6 +26,7 @@ export interface ICart {
 })
 export class CartComponent implements OnInit {
 
+  imageUrlPath = BASEURL;
   cart: ICart[] = [];
   quantityNo!: number;
   constructor(private shopService: ShopService) { }

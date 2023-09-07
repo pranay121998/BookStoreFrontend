@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import { IApiResponse } from 'src/app/models/common.Model';
+import { BASEURL } from 'src/app/models/serverUrls';
 import { ShopService } from 'src/app/services/shop.service';
 import * as XLSX from 'xlsx';
 
@@ -44,7 +45,7 @@ interface IOrderData {
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
+  imageUrlPath = BASEURL;
   OrdersList: IOrders[] = [];
   orderDataList: IOrderData[] = [];
   visible: boolean[] = [];
@@ -59,6 +60,8 @@ export class OrdersComponent implements OnInit {
       this.OrdersList = res.data;
       if (this.OrdersList.length > 0) {
         this.orderDataList = this.createOrdersStructure(this.OrdersList);
+        console.log(this.orderDataList);
+
       }
     })
   }
@@ -75,14 +78,14 @@ export class OrdersComponent implements OnInit {
         description: orderList.description,
         quantity: orderList.quantity
       }
-      let isExists = orderDataList.findIndex(x => x.paymentStatusID === orderList.paymentStatusID)
-
-      if (isExists === -1) {
+      let indexOfOrder = orderDataList.findIndex(x => x.paymentStatusID === orderList.paymentStatusID)
+      debugger
+      if (indexOfOrder === -1) {
         let orderListRow: IOrderData = {
           paymentStatusID: orderList.paymentStatusID,
           createdAt: orderList.createdAt,
           updateAt: orderList.updateAt,
-          total: 0,
+          total: productDetails.price * productDetails.quantity,
           userID: orderList.userID,
           productDetails: [productDetails]
         }
@@ -90,8 +93,8 @@ export class OrdersComponent implements OnInit {
         orderDataList.push(orderListRow);
         this.visible.push(false);
       } else {
-
-        orderDataList[isExists].productDetails.push(productDetails)
+        orderDataList[indexOfOrder].total += (productDetails.price * productDetails.quantity);
+        orderDataList[indexOfOrder].productDetails.push(productDetails);
       }
     });
     return orderDataList;

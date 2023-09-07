@@ -5,7 +5,7 @@
                 <mat-card-title>{{prod.title}}</mat-card-title>
             </mat-card-header>
             <div class="image" mat-card-image>
-                <img src='http://192.168.100.29:8080/{{prod.imageUrl}}' alt="{{prod.title}}">
+                <img src='{{imageUrlPath}}{{prod.imageUrl}}' alt="{{prod.title}}">
             </div>
             <mat-card-content>
                 <p style="background: #C9FFBF;  /* fallback for old browsers */

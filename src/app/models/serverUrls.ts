@@ -1,7 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 
-export const BASEURL = "http://192.168.100.29:8080/";
-const API = "http://192.168.100.29:8080/api/";
+export const BASEURL = "http://192.168.100.29:8080/bookstoreAPI/";
+const API = "http://192.168.100.29:8080/bookstoreAPI/api/";
 //"http://localhost:3000";
 
 
